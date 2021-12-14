@@ -1,0 +1,41 @@
+2021-12-07 17:00:16,793 INFO com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-6] info log
+2021-12-07 17:00:16,799 WARN com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-6] warning log
+2021-12-07 17:00:16,799 ERROR com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-6] error log
+2021-12-07 17:00:18,011 INFO com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-7] info log
+2021-12-07 17:00:18,012 WARN com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-7] warning log
+2021-12-07 17:00:18,024 ERROR com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-7] error log
+2021-12-07 17:00:19,234 INFO com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-8] info log
+2021-12-07 17:00:19,235 WARN com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-8] warning log
+2021-12-07 17:00:19,235 ERROR com.ibm.academia.apirest.controllers.PrimerRestController [http-nio-9081-exec-8] error log
+2021-12-07 17:02:34,422 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-07 17:02:34,428 INFO com.zaxxer.hikari.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2021-12-07 17:02:34,440 INFO com.zaxxer.hikari.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2021-12-07 17:02:34,604 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting UniversidadesRestApplication using Java 11.0.12 on LAPTOP-ENK3FB65 with PID 27036 (C:\Users\002292661\Documents\SpringToolSuite4.12\UniversidadesREST\target\classes started by 002292661 in C:\Users\002292661\Documents\SpringToolSuite4.12\UniversidadesREST)
+2021-12-07 17:02:34,634 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-12-07 17:02:34,960 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-07 17:02:35,002 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 41 ms. Found 4 JPA repository interfaces.
+2021-12-07 17:02:35,186 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9081 (http)
+2021-12-07 17:02:35,188 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9081"]
+2021-12-07 17:02:35,189 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-12-07 17:02:35,190 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-07 17:02:35,243 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-12-07 17:02:35,243 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 602 ms
+2021-12-07 17:02:35,303 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-07 17:02:35,314 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2021-12-07 17:02:35,408 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2021-12-07 17:02:35,409 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-12-07 17:03:54,489 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2021-12-07 17:03:54,519 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting UniversidadesRestApplication using Java 11.0.12 on LAPTOP-ENK3FB65 with PID 13952 (C:\Users\002292661\Documents\SpringToolSuite4.12\UniversidadesREST\target\classes started by 002292661 in C:\Users\002292661\Documents\SpringToolSuite4.12\UniversidadesREST)
+2021-12-07 17:03:54,522 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-12-07 17:03:54,703 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-07 17:03:54,704 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-07 17:03:57,435 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-07 17:03:57,748 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 275 ms. Found 4 JPA repository interfaces.
+2021-12-07 17:04:00,011 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9081 (http)
+2021-12-07 17:04:00,057 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9081"]
+2021-12-07 17:04:00,058 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-12-07 17:04:00,058 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-07 17:04:00,337 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-12-07 17:04:00,340 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 5634 ms
+2021-12-07 17:04:00,909 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-07 17:04:01,136 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.32.Final
