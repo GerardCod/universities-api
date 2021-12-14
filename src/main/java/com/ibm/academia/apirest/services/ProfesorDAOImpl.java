@@ -1,5 +1,7 @@
 package com.ibm.academia.apirest.services;
 
+import java.util.Optional;
+
 import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.repositories.ProfesorRepository;
 
@@ -13,8 +15,14 @@ public class ProfesorDAOImpl implements ProfesorDAO {
   private ProfesorRepository repository;
 
   @Override
-  public Iterable<Persona> findProfesoresByCarrera(String carrera) {
-    return repository.findProfesoresByCarrera(carrera);
+  public Optional<Iterable<Persona>> findProfesoresByCarrera(String carrera) {
+    Iterable<Persona> result = repository.findProfesoresByCarrera(carrera);
+
+    if (result != null && result.iterator().hasNext()) {
+      return Optional.of(result);
+    }
+
+    return Optional.empty();
   }
   
 }
