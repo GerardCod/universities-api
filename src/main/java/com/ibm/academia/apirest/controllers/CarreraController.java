@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.apirest.exceptions.BadRequestException;
@@ -135,5 +136,24 @@ public class CarreraController
 				.map(CarreraMapper::mapCarrera)
 				.collect(Collectors.toList());
 		return new ResponseEntity<List<CarreraDTO>>(listaCarreras, HttpStatus.OK);
+	}
+
+	@GetMapping("/profesor")
+	public ResponseEntity<Iterable<CarreraDTO>> obtenerCarrerasPorProfesorNombreYApellido(
+		@RequestParam(name = "nombre", required = true) String nombre,
+		@RequestParam(name = "apellido", required = true) String apellido
+	) {
+		List<Carrera> carreras = (List<Carrera>) carreraDao.findCarrerarPorProfesorNombreYApellido(nombre, apellido);
+
+		if (carreras.isEmpty()) {
+			throw new NotFoundException(String.format("No hay carreras con docente %s %s", nombre, apellido));
+		}
+
+		List<CarreraDTO> listaCarreras = carreras
+		.stream()
+		.map(CarreraMapper::mapCarrera)
+		.collect(Collectors.toList());
+
+		return ResponseEntity.ok(listaCarreras);
 	}
 }
