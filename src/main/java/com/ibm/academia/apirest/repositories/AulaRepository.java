@@ -13,6 +13,6 @@ public interface AulaRepository extends CrudRepository<Integer, Aula> {
 
   Iterable<Aula> findAulasByPabellonNombre(String nombre);
 
-  Iterable<Aula> findAulasByNumeroAula(Integer numeroAula);
+  Aula findAulaByNumeroAula(Integer numeroAula);
 
 }

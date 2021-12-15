@@ -39,10 +39,10 @@ public class AulaDAOImpl implements AulaDAO {
   }
 
   @Override
-  public Optional<List<Aula>> findAulasByNumeroAula(Integer numeroAula) {
-    List<Aula> result = (List<Aula>) repository.findAulasByNumeroAula(numeroAula);
+  public Optional<Aula> findAulaByNumeroAula(Integer numeroAula) {
+    Aula result = repository.findAulaByNumeroAula(numeroAula);
 
-    if (!result.isEmpty()) {
+    if (result != null) {
       return Optional.of(result);
     }
 

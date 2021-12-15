@@ -12,6 +12,6 @@ public interface AulaDAO {
   
   Optional<List<Aula>> findAulasByPabellonNombre(String nombre);
   
-  Optional<List<Aula>> findAulasByNumeroAula(Integer numeroAula);
+  Optional<Aula> findAulaByNumeroAula(Integer numeroAula);
 
 }
