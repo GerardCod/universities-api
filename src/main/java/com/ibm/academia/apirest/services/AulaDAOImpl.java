@@ -29,14 +29,24 @@ public class AulaDAOImpl implements AulaDAO {
 
   @Override
   public Optional<List<Aula>> findAulasByPabellonNombre(String nombre) {
-    // TODO Auto-generated method stub
-    return null;
+    List<Aula> result = (List<Aula>) repository.findAulasByPabellonNombre(nombre);
+    
+    if (!result.isEmpty()) {
+      return Optional.of(result);
+    }
+
+    return Optional.empty();
   }
 
   @Override
   public Optional<List<Aula>> findAulasByNumeroAula(Integer numeroAula) {
-    // TODO Auto-generated method stub
-    return null;
+    List<Aula> result = (List<Aula>) repository.findAulasByNumeroAula(numeroAula);
+
+    if (!result.isEmpty()) {
+      return Optional.of(result);
+    }
+
+    return Optional.empty();
   }
   
 }
