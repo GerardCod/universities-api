@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AulaDAOImpl implements AulaDAO {
+public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository>  implements AulaDAO {
 
   @Autowired
-  private AulaRepository repository;
+  public AulaDAOImpl(AulaRepository repository) {
+    super(repository);
+  }
 
   @Override
   public Optional<List<Aula>> findAulasByPizarron(Pizarron pizarron) {
