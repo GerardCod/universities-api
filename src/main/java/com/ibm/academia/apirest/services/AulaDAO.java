@@ -6,12 +6,14 @@ import java.util.Optional;
 import com.ibm.academia.apirest.enums.Pizarron;
 import com.ibm.academia.apirest.models.entities.Aula;
 
-public interface AulaDAO {
+public interface AulaDAO extends GenericoDAO<Aula> {
   
   Optional<List<Aula>> findAulasByPizarron(Pizarron pizarron);
   
   Optional<List<Aula>> findAulasByPabellonNombre(String nombre);
   
   Optional<Aula> findAulaByNumeroAula(Integer numeroAula);
+
+  Optional<Aula> update(Aula actual, Aula changed);
 
 }

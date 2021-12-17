@@ -1,6 +1,8 @@
 package com.ibm.academia.apirest.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -12,6 +14,7 @@ import com.ibm.academia.apirest.models.entities.Aula;
 import com.ibm.academia.apirest.services.AulaDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/aulas")
-public class AulaController {
+public class AulaController implements GenericController<Aula, Integer> {
   
   @Autowired
   private AulaDAO service;
@@ -71,6 +74,49 @@ public class AulaController {
     }
     
     return ResponseEntity.ok(AulaMapper.mapAula(result.get()));
+  }
+
+  @Override
+  public ResponseEntity<Aula> create(Aula entity) {
+    Aula aulaSaved = service.guardar(entity);
+    return ResponseEntity.status(HttpStatus.CREATED).body(aulaSaved);
+  }
+
+  @Override
+  public ResponseEntity<List<Aula>> findAll() {
+    List<Aula> result = (List<Aula>) service.buscarTodos();
+    return ResponseEntity.ok(result);
+  }
+
+  @Override
+  public ResponseEntity<Aula> findById(Integer id) {
+    Optional<Aula> result = service.buscarPorId(id);
+    
+    if (!result.isPresent()) {
+      throw new NotFoundException("No se encontró un aula con el id: " + id);
+    }
+    
+    return ResponseEntity.ok(result.get());
+  }
+
+  @Override
+  public ResponseEntity<Aula> update(Integer id, Aula entity) {
+
+    Optional<Aula> result = service.buscarPorId(id);
+    if (!result.isPresent()) {
+      throw new NotFoundException("No se encontró un aula con el id: " + id);
+    }
+    Optional<Aula> updated = service.update(result.get(), entity);
+
+    return ResponseEntity.ok(updated.get());
+  }
+
+  @Override
+  public ResponseEntity<?> deleteById(Integer id) {
+    Map<String, String> response = new HashMap<>();
+    response.put("message", "Se eliminó el aula con id " + id);
+    service.eliminarPorId(id);
+    return ResponseEntity.ok(response);
   }
 
 }

@@ -9,6 +9,7 @@ import com.ibm.academia.apirest.repositories.AulaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository>  implements AulaDAO {
@@ -19,6 +20,7 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository>  implemen
   }
 
   @Override
+  @Transactional(readOnly = true)
   public Optional<List<Aula>> findAulasByPizarron(Pizarron pizarron) {
     List<Aula> result = (List<Aula>) repository.findAulasByPizarron(pizarron);
     
@@ -30,6 +32,7 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository>  implemen
   }
 
   @Override
+  @Transactional(readOnly = true)
   public Optional<List<Aula>> findAulasByPabellonNombre(String nombre) {
     List<Aula> result = (List<Aula>) repository.findAulasByPabellonNombre(nombre);
     
@@ -41,6 +44,7 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository>  implemen
   }
 
   @Override
+  @Transactional(readOnly = true)
   public Optional<Aula> findAulaByNumeroAula(Integer numeroAula) {
     Aula result = repository.findAulaByNumeroAula(numeroAula);
 
@@ -49,6 +53,19 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository>  implemen
     }
 
     return Optional.empty();
+  }
+
+  @Override
+  @Transactional
+  public Optional<Aula> update(Aula actual, Aula changed) {
+    actual.setMedidas(changed.getMedidas());
+    actual.setCantidadPupitres(changed.getCantidadPupitres());
+    actual.setNumeroAula(changed.getNumeroAula());
+    actual.setPabellon(changed.getPabellon());
+    actual.setPizarron(changed.getPizarron());
+
+    Aula result = repository.save(actual);
+    return Optional.of(result);
   }
   
 }
