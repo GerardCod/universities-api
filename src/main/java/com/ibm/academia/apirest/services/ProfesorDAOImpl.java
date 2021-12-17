@@ -2,6 +2,7 @@ package com.ibm.academia.apirest.services;
 
 import java.util.Optional;
 
+
 import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.repositories.PersonaRepository;
 import com.ibm.academia.apirest.repositories.ProfesorRepository;
@@ -9,6 +10,7 @@ import com.ibm.academia.apirest.repositories.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
@@ -20,6 +22,7 @@ public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
 
 
   @Override
+  @Transactional(readOnly = true)
   public Optional<Iterable<Persona>> findProfesoresByCarrera(String carrera) {
     Iterable<Persona> result = ((ProfesorRepository) repository).findProfesoresByCarrera(carrera);
 
@@ -28,6 +31,18 @@ public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
     }
 
     return Optional.empty();
+  }
+
+
+  @Override
+  @Transactional
+  public Optional<Persona> updateProfesor(Persona actualProfesor, Persona profesorChanged) {
+    actualProfesor.setNombre(profesorChanged.getNombre());
+    actualProfesor.setApellido(profesorChanged.getApellido());
+    actualProfesor.setDireccion(profesorChanged.getDireccion());
+
+    Persona personaSaved = repository.save(actualProfesor);
+    return Optional.of(personaSaved);
   }
   
 }

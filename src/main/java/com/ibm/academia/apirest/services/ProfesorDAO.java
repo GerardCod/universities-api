@@ -8,4 +8,6 @@ public interface ProfesorDAO extends PersonaDAO {
   
   Optional<Iterable<Persona>> findProfesoresByCarrera(String carrera);
 
+  Optional<Persona> updateProfesor(Persona actualProfesor, Persona profesorChanged);
+
 }
