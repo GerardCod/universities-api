@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AulaRepository extends CrudRepository<Integer, Aula> {
+public interface AulaRepository extends CrudRepository<Aula, Integer> {
   
   Iterable<Aula> findAulasByPizarron(Pizarron pizarron);
 
