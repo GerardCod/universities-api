@@ -7,12 +7,16 @@ import com.ibm.academia.apirest.models.entities.Direccion;
 import com.ibm.academia.apirest.models.entities.Pabellon;
 import com.ibm.academia.apirest.repositories.PabellonRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PabellonDAOImpl implements PabellonDAO {
+public class PabellonDAOImpl extends GenericoDAOImpl<Pabellon, PabellonRepository>  implements PabellonDAO {
 
-  private PabellonRepository repository;
+  @Autowired
+  public PabellonDAOImpl(PabellonRepository repository) {
+    super(repository);
+  }
 
   @Override
   public Optional<List<Pabellon>> getPabellonesByDireccion(Direccion direccion) {
@@ -34,6 +38,18 @@ public class PabellonDAOImpl implements PabellonDAO {
     }
 
     return Optional.empty();
+  }
+
+  @Override
+  public Optional<Pabellon> updatePabellon(Pabellon actual, Pabellon changed) {
+
+    actual.setNombre(changed.getNombre());
+    actual.setMetrosCuadrados(changed.getMetrosCuadrados());
+    actual.setDireccion(changed.getDireccion());
+
+    Pabellon result = repository.save(actual);
+
+    return Optional.of(result);
   }
   
 }
