@@ -148,7 +148,7 @@ public class AulaController implements GenericController<Aula, Integer> {
    * @throws NotFoundException si no hay un aula con el id ingresado.
    */
   @Override
-  @PutMapping
+  @PutMapping("/{id}")
   public ResponseEntity<Aula> update(@PathVariable Integer id, @RequestBody Aula entity) {
 
     Optional<Aula> result = service.buscarPorId(id);

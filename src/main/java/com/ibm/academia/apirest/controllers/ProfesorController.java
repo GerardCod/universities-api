@@ -12,8 +12,11 @@ import com.ibm.academia.apirest.services.ProfesorDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +31,7 @@ public class ProfesorController implements GenericController<Persona, Integer> {
   private ProfesorDAO service;
 
   /**
-   * Regresa información de los profesores que pertenecen al nombre de una carrera pasada por parámetro.
+   * Endpoint que regresa información de los profesores que pertenecen al nombre de una carrera pasada por parámetro.
    * @param carrera Nombre de la carrera que usaremos para buscar a los profesores.
    * @return un objeto de tipo ResponseEntity<Iterable<Persona>>
    */
@@ -43,6 +46,11 @@ public class ProfesorController implements GenericController<Persona, Integer> {
     return ResponseEntity.ok(result.get());
   }
 
+  /**
+   * Endpoint para crear un nuevo profesor.
+   * @param entity Informacion del nuevo profesor.
+   * @return ResponseEntity con información del profesor creado.
+   */
   @Override
   @PostMapping
   public ResponseEntity<Persona> create(@RequestBody Persona entity) {
@@ -50,7 +58,13 @@ public class ProfesorController implements GenericController<Persona, Integer> {
     return ResponseEntity.status(HttpStatus.CREATED).body(result);
   }
 
+  /**
+   * Endpoint para consultar la información de todos los profesores creados en el sistema.
+   * @return ResponseEntity con la información de los profesores creados en el sistema.
+   * @throws NotFoundException si no hay profesores creados en el sistema.
+   */
   @Override
+  @GetMapping
   public ResponseEntity<List<Persona>> findAll() {
     List<Persona> result = (List<Persona>) service.buscarTodos();
 
@@ -61,8 +75,15 @@ public class ProfesorController implements GenericController<Persona, Integer> {
     return ResponseEntity.ok(result);
   }
 
+  /**
+   * Endpoint para consultar la información de un profesor por id.
+   * @param id Identificador del profesor.
+   * @return ResponseEntity con la información del profesor solicitado.
+   * @throws NotFoundException si no existe un profesor con el id ingresado.
+   */
   @Override
-  public ResponseEntity<Persona> findById(Integer id) {
+  @GetMapping("/{id}")
+  public ResponseEntity<Persona> findById(@PathVariable Integer id) {
     Optional<Persona> result = service.buscarPorId(id);
     
     if (!result.isPresent()) {
@@ -72,8 +93,16 @@ public class ProfesorController implements GenericController<Persona, Integer> {
     return ResponseEntity.ok(result.get());
   }
 
+  /**
+   * Endpoint para actualizar la información de un profesor.
+   * @param id Identificador del profesor.
+   * @param entity Información actualizada del profesor.
+   * @return ResponseEntity con la nueva información del profesor.
+   * @throws NotFoundException si no existe un profesor con el id ingresado.
+   */
   @Override
-  public ResponseEntity<Persona> update(Integer id, Persona entity) {
+  @PutMapping("/{id}")
+  public ResponseEntity<Persona> update(@PathVariable Integer id, @RequestBody Persona entity) {
 
     Optional<Persona> result = service.buscarPorId(id);
 
@@ -85,8 +114,14 @@ public class ProfesorController implements GenericController<Persona, Integer> {
     return ResponseEntity.ok(profesorSaved.get());
   }
 
+  /**
+   * Endpoint para eliminar un profesor por id.
+   * @param id Identificador del profesor.
+   * @return ResponseEntity con un mensaje de confirmación de la eliminación del profesor.
+   */
   @Override
-  public ResponseEntity<?> deleteById(Integer id) {
+  @DeleteMapping("/{id}")
+  public ResponseEntity<?> deleteById(@PathVariable Integer id) {
     Map<String, String> response = new HashMap<>();
     service.eliminarPorId(id);
     response.put("message", "Profesor con id " + id + " eliminado");
