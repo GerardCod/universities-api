@@ -10,6 +10,7 @@ import com.ibm.academia.apirest.repositories.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
@@ -21,6 +22,7 @@ public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
 
 
   @Override
+  @Transactional(readOnly = true)
   public Optional<Iterable<Persona>> findEmpleadoByTipoEmpleado(TipoEmpleado tipoEmpleado) {
     Iterable<Persona> result = ((EmpleadoRepository) repository).findEmpleadoByTipoEmpleado(tipoEmpleado);
 
@@ -32,6 +34,7 @@ public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
   }
 
   @Override
+  @Transactional
   public Optional<Persona> updateEmployee(Persona actual, Persona changed) {
     actual.setNombre(changed.getNombre());
     actual.setApellido(changed.getApellido());
