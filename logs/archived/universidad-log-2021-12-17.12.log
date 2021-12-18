@@ -1,0 +1,35 @@
+2021-12-17 09:53:17,720 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-17 09:53:17,916 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-17 09:53:17,987 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-12-17 09:53:18,096 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-9081"]
+2021-12-17 09:53:18,098 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9081 (http) with context path ''
+2021-12-17 09:53:18,266 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started UniversidadesRestApplication in 1.681 seconds (JVM running for 1038.291)
+2021-12-17 09:53:18,267 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2021-12-17 09:55:32,276 INFO org.apache.juli.logging.DirectJDKLog [http-nio-9081-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-17 09:55:32,277 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-9081-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-12-17 09:55:32,278 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-9081-exec-2] Completed initialization in 1 ms
+2021-12-17 09:55:32,355 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-9081-exec-2] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Could not resolve subtype of [simple type, class com.ibm.academia.apirest.models.entities.Persona]: missing type id property 'tipo'; nested exception is com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve subtype of [simple type, class com.ibm.academia.apirest.models.entities.Persona]: missing type id property 'tipo'<LF> at [Source: (PushbackInputStream); line: 5, column: 1]]
+2021-12-17 09:56:10,810 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-9081-exec-4] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Could not resolve subtype of [simple type, class com.ibm.academia.apirest.models.entities.Persona]: missing type id property 'tipo'; nested exception is com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve subtype of [simple type, class com.ibm.academia.apirest.models.entities.Persona]: missing type id property 'tipo'<LF> at [Source: (PushbackInputStream); line: 6, column: 1]]
+2021-12-17 09:57:04,541 INFO org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(29)-127.0.0.1] Application shutdown requested.
+2021-12-17 09:57:04,731 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [RMI TCP Connection(29)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-17 09:57:04,732 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(29)-127.0.0.1] HikariPool-2 - Shutdown initiated...
+2021-12-17 09:57:04,737 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(29)-127.0.0.1] HikariPool-2 - Shutdown completed.
+2021-12-17 09:59:38,221 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2021-12-17 09:59:38,224 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting UniversidadesRestApplication using Java 11.0.2 on DESKTOP-HVAVNAL with PID 12428 (C:\Users\105204781\Desktop\UniversidadesREST\target\classes started by 105204781 in C:\Users\105204781\Desktop\UniversidadesREST)
+2021-12-17 09:59:38,226 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-12-17 09:59:38,268 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-17 09:59:38,269 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-17 09:59:39,250 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-17 09:59:39,315 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 54 ms. Found 6 JPA repository interfaces.
+2021-12-17 09:59:39,834 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9081 (http)
+2021-12-17 09:59:39,845 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9081"]
+2021-12-17 09:59:39,846 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-12-17 09:59:39,846 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-17 09:59:39,947 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-12-17 09:59:39,948 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1678 ms
+2021-12-17 09:59:40,074 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-17 09:59:40,118 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-17 09:59:40,230 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-17 09:59:40,323 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2021-12-17 09:59:40,503 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2021-12-17 09:59:40,533 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
