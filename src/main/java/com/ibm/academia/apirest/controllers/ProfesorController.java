@@ -6,21 +6,16 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.ibm.academia.apirest.exceptions.NotFoundException;
+import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.models.entities.Persona;
+import com.ibm.academia.apirest.services.CarreraDAO;
 import com.ibm.academia.apirest.services.ProfesorDAO;
 
+import io.swagger.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/profesor")
@@ -28,6 +23,27 @@ public class ProfesorController implements GenericController<Persona, Integer> {
   
   @Autowired
   private ProfesorDAO service;
+
+  @Autowired
+  private CarreraDAO careerService;
+
+  @PatchMapping("/association/{professorId}/{careerId}")
+  public ResponseEntity<Persona> addProfessorToCareer(@PathVariable("") Integer professorId, @PathVariable Integer careerId) {
+    Optional<Persona> professorFound = service.buscarPorId(professorId);
+
+    if (!professorFound.isPresent()) {
+      throw new NotFoundException("No existe un profesor con id: " + professorId);
+    }
+
+    Optional<Carrera> careerFound = careerService.buscarPorId(careerId);
+
+    if (!careerFound.isPresent()) {
+      throw new NotFoundException("No existe una carrera con id: " + careerId);
+    }
+
+    Optional<Persona> result = service.addProfessorToCareer(professorFound.get(), careerFound.get());
+    return ResponseEntity.ok(result.get());
+  }
 
   /**
    * Endpoint que regresa información de los profesores que pertenecen al nombre de una carrera pasada por parámetro.
