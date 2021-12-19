@@ -3,7 +3,9 @@ package com.ibm.academia.apirest.services;
 import java.util.Optional;
 
 
+import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.models.entities.Persona;
+import com.ibm.academia.apirest.models.entities.Profesor;
 import com.ibm.academia.apirest.repositories.PersonaRepository;
 import com.ibm.academia.apirest.repositories.ProfesorRepository;
 
@@ -44,5 +46,15 @@ public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
     Persona personaSaved = repository.save(actualProfesor);
     return Optional.of(personaSaved);
   }
-  
+
+  @Override
+  public Optional<Persona> addProfessorToCareer(Persona professor, Carrera career) {
+    ((Profesor) professor).getCarreras().add(career);
+
+    Persona result = repository.save(professor);
+
+    return Optional.of(result);
+
+  }
+
 }

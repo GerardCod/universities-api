@@ -34,7 +34,7 @@ public class ProfesorController implements GenericController<Persona, Integer> {
    * @param carrera Nombre de la carrera que usaremos para buscar a los profesores.
    * @return un objeto de tipo ResponseEntity<Iterable<Persona>>
    */
-  @GetMapping
+  @GetMapping("/carrera")
   public ResponseEntity<Iterable<Persona>> findProfesoresByCarrera(@RequestParam("carrera") String carrera) {
     Optional<Iterable<Persona>> result = service.findProfesoresByCarrera(carrera);
 
