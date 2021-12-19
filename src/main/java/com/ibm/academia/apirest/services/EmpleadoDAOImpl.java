@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
 
   @Autowired
-  public EmpleadoDAOImpl(@Qualifier("empleadoRepository") PersonaRepository repository) {
+  public EmpleadoDAOImpl(@Qualifier("repositorioEmpleados") PersonaRepository repository) {
     super(repository);
   }
 

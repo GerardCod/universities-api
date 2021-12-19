@@ -3,10 +3,12 @@ package com.ibm.academia.apirest.repositories;
 import com.ibm.academia.apirest.enums.TipoEmpleado;
 import com.ibm.academia.apirest.models.entities.Persona;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Qualifier("repositorioEmpleados")
 public interface EmpleadoRepository extends PersonaRepository 
 {
 
