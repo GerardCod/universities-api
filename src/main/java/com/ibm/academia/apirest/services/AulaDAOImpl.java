@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.ibm.academia.apirest.enums.Pizarron;
 import com.ibm.academia.apirest.models.entities.Aula;
+import com.ibm.academia.apirest.models.entities.Pabellon;
 import com.ibm.academia.apirest.repositories.AulaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,15 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository>  implemen
     actual.setPizarron(changed.getPizarron());
 
     Aula result = repository.save(actual);
+    return Optional.of(result);
+  }
+
+  @Override
+  public Optional<Aula> addPabellonToAula(Aula aulaFound, Pabellon pabellonFound) {
+
+    aulaFound.setPabellon(pabellonFound);
+    Aula result = repository.save(aulaFound);
+
     return Optional.of(result);
   }
   
