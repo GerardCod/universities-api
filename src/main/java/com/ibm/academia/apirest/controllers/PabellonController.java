@@ -57,7 +57,7 @@ public class PabellonController implements GenericController<Pabellon, Integer> 
     Optional<List<Pabellon>> result = service.getPabellonesByDireccion(direccion);
 
     if (!result.isPresent()) {
-      throw new NotFoundException("No hay pabellones en el sistema");
+      throw new NotFoundException("No hay pabellones en esa dirección");
     }
 
     return ResponseEntity.ok(result.get());

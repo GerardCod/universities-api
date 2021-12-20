@@ -11,7 +11,6 @@ import com.ibm.academia.apirest.models.entities.Persona;
 import com.ibm.academia.apirest.services.CarreraDAO;
 import com.ibm.academia.apirest.services.ProfesorDAO;
 
-import io.swagger.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
