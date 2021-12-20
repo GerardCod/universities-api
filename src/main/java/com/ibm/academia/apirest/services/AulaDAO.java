@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.ibm.academia.apirest.enums.Pizarron;
 import com.ibm.academia.apirest.models.entities.Aula;
+import com.ibm.academia.apirest.models.entities.Pabellon;
 
 public interface AulaDAO extends GenericoDAO<Aula> {
   
@@ -15,5 +16,7 @@ public interface AulaDAO extends GenericoDAO<Aula> {
   Optional<Aula> findAulaByNumeroAula(Integer numeroAula);
 
   Optional<Aula> update(Aula actual, Aula changed);
+
+  Optional<Aula> addPabellonToAula(Aula aulaFound, Pabellon pabellonFound);
 
 }
