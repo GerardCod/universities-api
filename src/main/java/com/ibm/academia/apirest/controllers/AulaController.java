@@ -11,13 +11,16 @@ import com.ibm.academia.apirest.exceptions.NotFoundException;
 import com.ibm.academia.apirest.mapper.AulaMapper;
 import com.ibm.academia.apirest.models.dto.AulaDTO;
 import com.ibm.academia.apirest.models.entities.Aula;
+import com.ibm.academia.apirest.models.entities.Pabellon;
 import com.ibm.academia.apirest.services.AulaDAO;
+import com.ibm.academia.apirest.services.PabellonDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -32,6 +35,9 @@ public class AulaController implements GenericController<Aula, Integer> {
   
   @Autowired
   private AulaDAO service;
+
+  @Autowired
+  private PabellonDAO pabellonService;
 
   /**
    * Endpoint para consultar aulas por tipo de pizarrón.
@@ -95,6 +101,31 @@ public class AulaController implements GenericController<Aula, Integer> {
       throw new NotFoundException("No hay aula con el número: " + numeroAula);
     }
     
+    return ResponseEntity.ok(AulaMapper.mapAula(result.get()));
+  }
+
+  /**
+   * Endpoint patch para asignar un pabellón a un aula
+   * @param aulaId Identificador del aula.
+   * @param pabellonId Identificador del pabellón.
+   * @return ResponseEntity con información actualizada del aula.
+   * @throws NotFoundException si no se encuentra el aula o el pabellón con el id ingresado.
+   */
+  @PatchMapping("/association/{aulaId}/{pabellonId}")
+  public ResponseEntity<AulaDTO> addPabellonToAula(@PathVariable Integer aulaId, @PathVariable Integer pabellonId) {
+    Optional<Aula> aulaFound = service.buscarPorId(aulaId);
+
+    if (!aulaFound.isPresent()) {
+      throw new NotFoundException("No existe un aula con id: " + aulaId);
+    }
+
+    Optional<Pabellon> pabellonFound = pabellonService.buscarPorId(pabellonId);
+
+    if (!pabellonFound.isPresent()) {
+      throw new NotFoundException("No existe un pabellón con id: " + pabellonId);
+    }
+
+    Optional<Aula> result = service.addPabellonToAula(aulaFound.get(), pabellonFound.get());
     return ResponseEntity.ok(AulaMapper.mapAula(result.get()));
   }
   
