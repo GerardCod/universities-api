@@ -2,13 +2,9 @@ package com.ibm.academia.apirest.datos;
 
 import java.math.BigDecimal;
 
+import com.ibm.academia.apirest.enums.Pizarron;
 import com.ibm.academia.apirest.enums.TipoEmpleado;
-import com.ibm.academia.apirest.models.entities.Alumno;
-import com.ibm.academia.apirest.models.entities.Carrera;
-import com.ibm.academia.apirest.models.entities.Direccion;
-import com.ibm.academia.apirest.models.entities.Empleado;
-import com.ibm.academia.apirest.models.entities.Persona;
-import com.ibm.academia.apirest.models.entities.Profesor;
+import com.ibm.academia.apirest.models.entities.*;
 
 public class DatosDummy 
 {
@@ -55,5 +51,17 @@ public class DatosDummy
 	public static Persona alumno03() 
 	{
 		return new Alumno(null, "Joaquin", "Leon", "45233012", new Direccion());
+	}
+
+	public static Aula aula01() {
+		return new Aula(null,10, "15 x 15", 35, Pizarron.PIZARRA_TIZA);
+	}
+
+	public static Aula aula02() {
+		return new Aula(null,15, "15 x 15", 35, Pizarron.PIZARRA_BLANCA);
+	}
+
+	public static Aula aula03() {
+		return new Aula(null,20, "15 x 15", 35, Pizarron.PIZARRA_BLANCA);
 	}
 }
