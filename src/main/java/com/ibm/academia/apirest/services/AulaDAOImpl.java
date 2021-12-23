@@ -6,17 +6,17 @@ import java.util.Optional;
 import com.ibm.academia.apirest.enums.Pizarron;
 import com.ibm.academia.apirest.models.entities.Aula;
 import com.ibm.academia.apirest.models.entities.Pabellon;
-import com.ibm.academia.apirest.repositories.AulaRepository;
+import com.ibm.academia.apirest.repositories.AulaRepositoryTest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository>  implements AulaDAO {
+public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepositoryTest>  implements AulaDAO {
 
   @Autowired
-  public AulaDAOImpl(AulaRepository repository) {
+  public AulaDAOImpl(AulaRepositoryTest repository) {
     super(repository);
   }
 
